@@ -3,55 +3,185 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CineVault — Product Demos</title>
+<title>CineVault — Product Demos | Cinematic LUTs, Transitions, SFX & AI Tools</title>
+<meta name="description" content="Watch full-quality demo reels for every CineVault product: cinematic LUTs, transitions, SFX, film grain overlays, AI prompt packs and the UGC Ad Machine. Instant download via Gumroad.">
+<meta property="og:title" content="CineVault — Product Demos">
+<meta property="og:description" content="Full-quality demo reels for cinematic editing packs, AI prompt systems and creator tools.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="posters/luts50.jpg">
 <style>
   * { margin:0; padding:0; box-sizing:border-box; }
-  body { background:#0a0a0f; color:#f5f5f5; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; }
-  header { text-align:center; padding:48px 20px 12px; }
-  header h1 { font-size:2rem; letter-spacing:4px; color:#d4af37; }
-  header p { color:#999; margin-top:8px; font-size:.95rem; }
-  .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:24px; padding:32px 20px 60px; max-width:1400px; margin:0 auto; }
-  .card { background:#14141c; border:1px solid #2a2a35; border-radius:14px; overflow:hidden; transition:transform .2s, border-color .2s; }
-  .card:hover { transform:translateY(-4px); border-color:#d4af37; }
+  :root { --gold:#d4af37; --bg:#0a0a0f; --card:#14141c; --line:#2a2a35; --txt:#f5f5f5; --muted:#b8b8c0; }
+  body { background:var(--bg); color:var(--txt); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; line-height:1.5; }
+  a { color:inherit; }
+  .banner { background:linear-gradient(90deg,#2a2008,#3d2f0a); border-bottom:1px solid var(--gold); text-align:center; padding:10px 16px; font-size:.85rem; color:#ffe9a8; }
+  .banner strong { color:var(--gold); }
+  header { text-align:center; padding:40px 20px 8px; }
+  header h1 { font-size:2rem; letter-spacing:4px; color:var(--gold); }
+  header p { color:var(--muted); margin-top:10px; font-size:.95rem; max-width:640px; margin-left:auto; margin-right:auto; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr)); gap:24px; padding:32px 20px 24px; max-width:1400px; margin:0 auto; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:14px; overflow:hidden; display:flex; flex-direction:column; transition:transform .2s, border-color .2s; }
+  .card:hover { transform:translateY(-4px); border-color:var(--gold); }
   .card video { width:100%; aspect-ratio:16/9; display:block; background:#000; }
-  .info { padding:16px 18px 20px; display:flex; justify-content:space-between; align-items:center; gap:12px; }
+  .info { padding:16px 18px 20px; display:flex; flex-direction:column; gap:10px; flex:1; }
   .info h2 { font-size:1rem; font-weight:600; line-height:1.35; }
-  .price { color:#d4af37; font-weight:700; font-size:1.05rem; white-space:nowrap; }
-  footer { text-align:center; color:#666; padding:0 20px 40px; font-size:.85rem; }
+  .desc { color:var(--muted); font-size:.85rem; flex:1; }
+  .row { display:flex; justify-content:space-between; align-items:center; gap:12px; }
+  .price { color:var(--gold); font-weight:700; font-size:1.05rem; white-space:nowrap; }
+  .cta { display:inline-block; background:var(--gold); color:#111; font-weight:700; font-size:.9rem; text-decoration:none; padding:10px 20px; border-radius:8px; text-align:center; }
+  .cta:hover, .cta:focus-visible { background:#e8c34a; outline:2px solid #fff; outline-offset:2px; }
+  .cta.free { background:transparent; border:2px solid var(--gold); color:var(--gold); }
+  .trust { text-align:center; color:var(--muted); font-size:.85rem; padding:0 20px 8px; }
+  footer { text-align:center; color:#777; padding:24px 20px 40px; font-size:.85rem; }
+  footer a { color:var(--gold); }
+  video:focus-visible { outline:2px solid var(--gold); outline-offset:-2px; }
 </style>
 </head>
 <body>
+<div class="banner">Launch offer: code <strong>LAUNCH25</strong> = 25% off — ends Oct 28</div>
 <header>
   <h1>CINEVAULT</h1>
-  <p>Full-quality demo reels — every product</p>
+  <p>Watch every product in action — full-quality demo reels. Click through to buy on Gumroad with instant download.</p>
 </header>
-<div class="grid" id="grid"></div>
-<footer>© 2026 CineVault · Demos shown at full 1080p quality</footer>
-<script>
-const products = [
-  ["luts50","50 Cinematic LUTs","$15"],
-  ["sonyslog3","Sony S-Log3 30 LUTs","$15"],
-  ["wedding","25 Wedding & Romance LUTs","$15"],
-  ["lightroom","20 Cinematic Lightroom Presets","$14.99"],
-  ["transitions","50 Seamless Transitions","$27.99"],
-  ["sfx","30 Cinematic SFX","$12"],
-  ["whooshes","50 Whooshes & Impacts","$12.99"],
-  ["filmgrain","Film Grain + Light Leaks","$7.99"],
-  ["reelsprompts","150 AI Video Prompts for Viral Reels","$6.99"],
-  ["creatorprompts","200 AI Prompts for Content Creators","$6.99"],
-  ["ugcmachine","UGC AD MACHINE™","$29"],
-  ["budget","Ultimate Monthly Budget Tracker","$10.99"],
-  ["planner","Undated Digital Planner 2026","$9.99"],
-  ["freeluts","3 Free Cinematic LUTs","Free"],
-  ["bundle","Complete Bundle","$39"],
-];
-document.getElementById("grid").innerHTML = products.map(([slug,name,price]) => `
-  <div class="card">
-    <video controls preload="none" poster="posters/${slug}.jpg" playsinline>
-      <source src="videos/${slug}.mp4" type="video/mp4">
-    </video>
-    <div class="info"><h2>${name}</h2><span class="price">${price}</span></div>
-  </div>`).join("");
-</script>
+<main class="grid">
+
+  <article class="card">
+    <video controls preload="none" poster="posters/luts50.jpg" playsinline aria-label="Demo reel: 50 Cinematic LUTs"><source src="videos/luts50.mp4" type="video/mp4"></video>
+    <div class="info">
+      <h2>50 Cinematic LUTs</h2>
+      <p class="desc">50 drag-and-drop .cube looks for Premiere, DaVinci Resolve &amp; CapCut.</p>
+      <div class="row"><span class="price">$15</span><a class="cta" href="https://thecinevault.gumroad.com/">Buy on Gumroad</a></div>
+    </div>
+  </article>
+
+  <article class="card">
+    <video controls preload="none" poster="posters/sonyslog3.jpg" playsinline aria-label="Demo reel: Sony S-Log3 Cinematic Pack"><source src="videos/sonyslog3.mp4" type="video/mp4"></video>
+    <div class="info">
+      <h2>Sony S-Log3 Cinematic Pack</h2>
+      <p class="desc">30 .cube LUTs built for Sony S-Log3: 5 conversion LUTs + 25 creative looks.</p>
+      <div class="row"><span class="price">$15</span><a class="cta" href="https://thecinevault.gumroad.com/l/fobfqe">Buy on Gumroad</a></div>
+    </div>
+  </article>
+
+  <article class="card">
+    <video controls preload="none" poster="posters/wedding.jpg" playsinline aria-label="Demo reel: 25 Wedding and Romance LUTs"><source src="videos/wedding.mp4" type="video/mp4"></video>
+    <div class="info">
+      <h2>25 Wedding &amp; Romance LUTs</h2>
+      <p class="desc">25 .cube LUTs for weddings, couples &amp; lifestyle films.</p>
+      <div class="row"><span class="price">$15</span><a class="cta" href="https://thecinevault.gumroad.com/l/fenqee">Buy on Gumroad</a></div>
+    </div>
+  </article>
+
+  <article class="card">
+    <video controls preload="none" poster="posters/lightroom.jpg" playsinline aria-label="Demo reel: 20 Cinematic Lightroom Presets"><source src="videos/lightroom.mp4" type="video/mp4"></video>
+    <div class="info">
+      <h2>20 Cinematic Lightroom Presets</h2>
+      <p class="desc">20 .xmp presets for desktop &amp; mobile + install guide.</p>
+      <div class="row"><span class="price">$14.99</span><a class="cta" href="https://thecinevault.gumroad.com/l/cevuv">Buy on Gumroad</a></div>
+    </div>
+  </article>
+
+  <article class="card">
+    <video controls preload="none" poster="posters/transitions.jpg" playsinline aria-label="Demo reel: 50 Vertical Video Transitions"><source src="videos/transitions.mp4" type="video/mp4"></video>
+    <div class="info">
+      <h2>50 Vertical Video Transitions</h2>
+      <p class="desc">50 drag-and-drop MP4 transition clips — 1080×1920 vertical.</p>
+      <div class="row"><span class="price">$27.99</span><a class="cta" href="https://thecinevault.gumroad.com/l/ybzxp">Buy on Gumroad</a></div>
+    </div>
+  </article>
+
+  <article class="card">
+    <video controls preload="none" poster="posters/sfx.jpg" playsinline aria-label="Demo reel: 30 Cinematic SFX Pack"><source src="videos/sfx.mp4" type="video/mp4"></video>
+    <div class="info">
+      <h2>30 Cinematic SFX Pack</h2>
+      <p class="desc">30 royalty-free cinematic sound effects (44.1 kHz WAV).</p>
+      <div class="row"><span class="price">$12</span><a class="cta" href="https://thecinevault.gumroad.com/l/qxwpus">Buy on Gumroad</a></div>
+    </div>
+  </article>
+
+  <article class="card">
+    <video controls preload="none" poster="posters/whooshes.jpg" playsinline aria-label="Demo reel: 50 Cinematic Whooshes and Impacts"><source src="videos/whooshes.mp4" type="video/mp4"></video>
+    <div class="info">
+      <h2>50 Whooshes &amp; Impacts</h2>
+      <p class="desc">50 designed whooshes, deep impacts &amp; tension risers (44.1 kHz WAV).</p>
+      <div class="row"><span class="price">$12.99</span><a class="cta" href="https://thecinevault.gumroad.com/l/oradsx">Buy on Gumroad</a></div>
+    </div>
+  </article>
+
+  <article class="card">
+    <video controls preload="none" poster="posters/filmgrain.jpg" playsinline aria-label="Demo reel: Film Grain and Light Leaks"><source src="videos/filmgrain.mp4" type="video/mp4"></video>
+    <div class="info">
+      <h2>Film Grain + Light Leaks</h2>
+      <p class="desc">16 film grain &amp; light leak overlays for an analog finish.</p>
+      <div class="row"><span class="price">$7.99</span><a class="cta" href="https://thecinevault.gumroad.com/">Buy on Gumroad</a></div>
+    </div>
+  </article>
+
+  <article class="card">
+    <video controls preload="none" poster="posters/reelsprompts.jpg" playsinline aria-label="Demo reel: 150 AI Video Prompts for Viral Reels"><source src="videos/reelsprompts.mp4" type="video/mp4"></video>
+    <div class="info">
+      <h2>150 AI Video Prompts for Viral Reels</h2>
+      <p class="desc">150 copy-paste prompts for AI video generators (PDF + Markdown).</p>
+      <div class="row"><span class="price">$6.99</span><a class="cta" href="https://thecinevault.gumroad.com/l/cgxmis">Buy on Gumroad</a></div>
+    </div>
+  </article>
+
+  <article class="card">
+    <video controls preload="none" poster="posters/creatorprompts.jpg" playsinline aria-label="Demo reel: 200 AI Prompts for Content Creators"><source src="videos/creatorprompts.mp4" type="video/mp4"></video>
+    <div class="info">
+      <h2>200 AI Prompts for Content Creators</h2>
+      <p class="desc">200 prompts: hooks, scripts, captions, video ideas &amp; thumbnails.</p>
+      <div class="row"><span class="price">$6.99</span><a class="cta" href="https://thecinevault.gumroad.com/l/dmjlvb">Buy on Gumroad</a></div>
+    </div>
+  </article>
+
+  <article class="card">
+    <video controls preload="none" poster="posters/ugcmachine.jpg" playsinline aria-label="Demo reel: UGC Ad Machine"><source src="videos/ugcmachine.mp4" type="video/mp4"></video>
+    <div class="info">
+      <h2>UGC Ad Machine™</h2>
+      <p class="desc">The AI UGC ad system: 190 video prompts, 150 hooks, 30 scripts, 50 ad angles.</p>
+      <div class="row"><span class="price">$29</span><a class="cta" href="https://thecinevault.gumroad.com/l/ugc-ad-machine">Buy on Gumroad</a></div>
+    </div>
+  </article>
+
+  <article class="card">
+    <video controls preload="none" poster="posters/budget.jpg" playsinline aria-label="Demo reel: Ultimate Monthly Budget Tracker"><source src="videos/budget.mp4" type="video/mp4"></video>
+    <div class="info">
+      <h2>Ultimate Monthly Budget Tracker</h2>
+      <p class="desc">Excel tracker: income, expenses &amp; savings goals update automatically.</p>
+      <div class="row"><span class="price">$10.99</span><a class="cta" href="https://thecinevault.gumroad.com/l/ynaxip">Buy on Gumroad</a></div>
+    </div>
+  </article>
+
+  <article class="card">
+    <video controls preload="none" poster="posters/planner.jpg" playsinline aria-label="Demo reel: Undated Digital Planner 2026"><source src="videos/planner.mp4" type="video/mp4"></video>
+    <div class="info">
+      <h2>Undated Digital Planner 2026</h2>
+      <p class="desc">109-page hyperlinked PDF planner — GoodNotes &amp; Notability ready.</p>
+      <div class="row"><span class="price">$9.99</span><a class="cta" href="https://thecinevault.gumroad.com/l/vuhcom">Buy on Gumroad</a></div>
+    </div>
+  </article>
+
+  <article class="card">
+    <video controls preload="none" poster="posters/freeluts.jpg" playsinline aria-label="Demo reel: 3 Free Cinematic LUTs"><source src="videos/freeluts.mp4" type="video/mp4"></video>
+    <div class="info">
+      <h2>3 Free Cinematic LUTs</h2>
+      <p class="desc">Try 3 free .cube LUTs before you buy the full pack.</p>
+      <div class="row"><span class="price">Free</span><a class="cta free" href="https://thecinevault.gumroad.com/l/qootcz">Download Free</a></div>
+    </div>
+  </article>
+
+  <article class="card">
+    <video controls preload="none" poster="posters/bundle.jpg" playsinline aria-label="Demo reel: CineVault Complete Bundle"><source src="videos/bundle.mp4" type="video/mp4"></video>
+    <div class="info">
+      <h2>Complete Bundle</h2>
+      <p class="desc">All 6 cinematic packs — 201 files. Save 58% vs buying separately.</p>
+      <div class="row"><span class="price">$39</span><a class="cta" href="https://thecinevault.gumroad.com/l/djhofc">Buy on Gumroad</a></div>
+    </div>
+  </article>
+
+</main>
+<p class="trust">Instant download · Commercial license included · Backed by Gumroad's 30-day money-back guarantee</p>
+<footer>© 2026 CineVault · <a href="https://thecinevault.gumroad.com/">Visit the store</a></footer>
 </body>
 </html>
